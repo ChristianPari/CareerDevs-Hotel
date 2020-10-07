@@ -10,7 +10,7 @@ module.exports = {
   },
 
   set: (key, val) => {
-    localStorage.setItem(key,JSON.stringify(val))
+    localStorage.setItem(key, JSON.stringify(val))
     return val
   }
 
