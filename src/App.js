@@ -1,7 +1,8 @@
 import React from 'react'
 
 // contexts
-import {RoomsContextProvider} from './Contexts/RoomContext'
+import { RoomsContextProvider } from './Contexts/RoomContext'
+import { ActionContextProvider } from './Contexts/ActionContext'
 
 // components
 import NavBar from './Components/NavBar'
@@ -11,8 +12,10 @@ export default function App() {
   return (
     <div className="App">
       <RoomsContextProvider>
-        <NavBar />
-        <Body />
+        <ActionContextProvider>
+          <NavBar />
+          <Body />
+        </ActionContextProvider>
       </RoomsContextProvider>
     </div>
   )
