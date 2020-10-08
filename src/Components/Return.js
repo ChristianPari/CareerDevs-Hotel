@@ -7,11 +7,13 @@ import Button from './Button'
 // contexts
 import { useActionUpdate } from '../Contexts/ActionContext'
 import { useRooms, useRoomsUpdate } from '../Contexts/RoomContext'
+import { useMoneyUpdate } from '../Contexts/UserMoneyContext'
 
 export default function Return() {
   const actionUpdater = useActionUpdate()
   const roomsUpdater = useRoomsUpdate().returnRoom
   const allRooms = useRooms()
+  const moneyUpdater = useMoneyUpdate()
 
   const unavailableRooms = []
   allRooms.forEach(floor => {
@@ -24,7 +26,7 @@ export default function Return() {
   return (
     <div 
       className='return'
-      style={{}}
+      style={{...returnStyle}}
     >
       {unavailableRooms.length !== 0 ? 
         unavailableRooms.map(room => {
@@ -32,6 +34,7 @@ export default function Return() {
             <div 
               className='rented'
               id={room.room}
+              style={{...roomStyle}}
             >
               <Text 
                 tag='h3'
@@ -48,8 +51,10 @@ export default function Return() {
                   const process = roomsUpdater(room.room, name)
                   if (process !== undefined)
                     alert(process)
-                  else
-                  actionUpdater('')
+                  else {
+                    moneyUpdater(room.price, 'return')
+                    actionUpdater('')
+                  }
                 }}
               />
             </div>
@@ -64,4 +69,15 @@ export default function Return() {
       }
     </div>
   )
+}
+
+const returnStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  margin: '1%'
+}
+
+const roomStyle = {
+  margin: '1%'
 }
