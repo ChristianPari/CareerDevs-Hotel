@@ -1,3 +1,7 @@
+# CareerDevs Hotel
+This is a straight React project that was used to display our abilities with the framework. We were requried to create an app that utitlizies React Hooks Life Cycle Methods such as useState, useEffect and useContext.
+
+
 # Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
